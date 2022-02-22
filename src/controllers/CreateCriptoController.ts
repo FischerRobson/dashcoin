@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { CreateCriptoService } from "../services/CreateCriptoService";
+import { Request, Response } from 'express';
+import { CreateCriptoService } from '../services/CreateCriptoService';
 
 export class CreateCriptoController {
   async handle(req: Request, res: Response) {
@@ -10,7 +10,7 @@ export class CreateCriptoController {
     const cripto = await createCriptoService.execute({
       name,
       initials,
-      value
+      value,
     });
 
     return res.json(cripto);

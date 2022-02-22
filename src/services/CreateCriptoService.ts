@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm";
-import { CriptosRepositories } from "../repositories/CriptosRepositories";
+import { getCustomRepository } from 'typeorm';
+import { CriptosRepositories } from '../repositories/CriptosRepositories';
 
 interface ICriptoRequest {
   name: string;
@@ -12,22 +12,21 @@ export class CreateCriptoService {
     const criptosRepositories = getCustomRepository(CriptosRepositories);
 
     if (!name || !initials || !value) {
-      throw new Error("Invalid infos!");
+      throw new Error('Invalid infos!');
     }
 
     const criptoAlreadyExists = await criptosRepositories.findOne({ initials });
 
-    if (criptoAlreadyExists) throw new Error("Cripto already exists!");
+    if (criptoAlreadyExists) throw new Error('Cripto already exists!');
 
     const cripto = criptosRepositories.create({
       name,
       initials,
-      value
+      value,
     });
 
     await criptosRepositories.save(cripto);
 
     return cripto;
-
   }
 }
