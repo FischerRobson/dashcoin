@@ -1,25 +1,23 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { v4 as uuid } from 'uuid';
 
-@Entity("criptos")
+@Entity('criptos')
 export class Cripto {
-
   @PrimaryColumn()
   readonly id: string;
 
   @Column()
-  name: string;
+    name: string;
 
   @Column()
-  initials: string;
+    initials: string;
 
   @Column()
-  value: number;
+    value: number;
 
   constructor() {
     if (!this.id) {
       this.id = uuid();
     }
   }
-
 }

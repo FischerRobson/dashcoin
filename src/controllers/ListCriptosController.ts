@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { ListCriptosService } from "../services/ListCritposService";
+import { Request, Response } from 'express';
+import { ListCriptosService } from '../services/ListCritposService';
 
 export class ListCriptosController {
   async handle(req: Request, res: Response) {

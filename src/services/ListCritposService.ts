@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm";
-import { CriptosRepositories } from "../repositories/CriptosRepositories";
+import { getCustomRepository } from 'typeorm';
+import { CriptosRepositories } from '../repositories/CriptosRepositories';
 
 export class ListCriptosService {
   async execute() {

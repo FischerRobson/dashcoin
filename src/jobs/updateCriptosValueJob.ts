@@ -1,20 +1,20 @@
-import axios from "axios";
-import cron from "node-cron";
-import { URL } from "../constants/urls";
-import { ListCriptosService } from "../services/ListCritposService";
-import { UpdateCriptosService } from "../services/UpdateCriptoService";
+import axios from 'axios';
+import cron from 'node-cron';
+import { URL } from '../constants/urls';
+import { ListCriptosService } from '../services/ListCritposService';
+import { UpdateCriptosService } from '../services/UpdateCriptoService';
 
 const listCriptosService = new ListCriptosService();
 const updateCriptosService = new UpdateCriptosService();
 
 const getValue = async (initials: string) => {
   await axios.get(URL.MERCADO_BITCOIN(initials))
-    .then(res => {
+    .then((res) => {
       const { last } = res.data.ticker;
       updateCriptosService.execute(initials, last);
     })
-    .catch(err => console.log(err));
-}
+    .catch((err) => console.log(err));
+};
 
 export const updateCriptosValueJob = cron.schedule('* * * * *', async () => {
   console.log('');
@@ -22,7 +22,7 @@ export const updateCriptosValueJob = cron.schedule('* * * * *', async () => {
 
   const criptos = await listCriptosService.execute();
 
-  const initials = criptos.map(cripto => cripto.initials);
+  const initials = criptos.map((cripto) => cripto.initials);
 
   initials.map(getValue);
 });

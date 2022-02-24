@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm";
-import { CriptosRepositories } from "../repositories/CriptosRepositories";
+import { getCustomRepository } from 'typeorm';
+import { CriptosRepositories } from '../repositories/CriptosRepositories';
 
 export class UpdateCriptosService {
   async execute(initials: string, value: number) {
@@ -13,7 +13,7 @@ export class UpdateCriptosService {
 
     return criptosRepositories.save({
       ...cripto,
-      value
+      value,
     });
   }
 }
