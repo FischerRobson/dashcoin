@@ -1,8 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
-import 'reflect-metadata';
+// import 'reflect-metadata';
 import './database';
-import cron from 'node-cron';
 import { updateCriptosValueJob } from './jobs/updateCriptosValueJob';
 import { router } from './routes';
 
@@ -12,6 +11,7 @@ app.use(router);
 
 updateCriptosValueJob.start();
 
+// eslint-disable-next-line no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof Error) {
     return res.status(400).json({
