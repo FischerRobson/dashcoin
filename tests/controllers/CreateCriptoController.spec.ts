@@ -2,6 +2,6 @@ import { CreateCriptoController } from '../../src/controllers/CreateCriptoContro
 
 describe(`${CreateCriptoController.name}`, () => {
   it('Should create a new cripto', () => {
-    
+
   });
 });
