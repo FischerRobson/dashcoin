@@ -29,7 +29,8 @@
             }
         ],
         "class-methods-use-this": "off",
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "linebreak-style": 0
     },
     "settings": {
         "import/resolver": {
