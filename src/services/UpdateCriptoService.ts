@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { getCustomRepository } from 'typeorm';
 import { CriptosRepositories } from '../repositories/CriptosRepositories';
 
