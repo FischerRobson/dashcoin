@@ -6,6 +6,9 @@ with their values ​​and amounts, as well as keeping the value of coins const
 ## Technologies
 
 * Node.JS
+* Express
 * Typescript
 * TypeORM
+* Jest
+* Docker
 * SQLite
