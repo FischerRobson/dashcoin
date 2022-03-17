@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
@@ -7,13 +8,13 @@ export class Cripto {
   readonly id: string;
 
   @Column()
-    name: string;
+  name: string;
 
   @Column()
-    initials: string;
+  initials: string;
 
   @Column()
-    value: number;
+  value: number;
 
   constructor() {
     if (!this.id) {
