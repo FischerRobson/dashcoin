@@ -16,7 +16,7 @@ export class CreateUserService {
   }: IUserRequest) {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
-    if (!name || !lastName || !birthday || !gender, !cpf) {
+    if (!cpf) {
       throw new Error('Missing properties');
     }
 
