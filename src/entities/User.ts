@@ -16,6 +16,9 @@ export class User {
   lastName: string;
 
   @Column()
+  email: string;
+
+  @Column()
   birthday: Date;
 
   @Column()
