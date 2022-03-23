@@ -6,12 +6,13 @@ export class CreateUserController {
     const createUserService = new CreateUserService();
 
     const {
-      name, lastName, birthday, gender, cpf,
+      name, lastName, email, birthday, gender, cpf,
     } = req.body;
 
     const user = await createUserService.execute({
       name,
       lastName,
+      email,
       birthday,
       gender,
       cpf,

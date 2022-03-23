@@ -8,6 +8,7 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest",
     "testing": "jest --watchAll",
+    "coeverage": "jest --collectCoverage",
     "lint": "eslint --fix --ext .ts,.tsx ."
   },
   "dependencies": {
