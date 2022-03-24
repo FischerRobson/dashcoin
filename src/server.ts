@@ -3,6 +3,7 @@ import 'express-async-errors';
 // import 'reflect-metadata';
 import './database';
 import { updateCriptosValueJob } from './jobs/updateCriptosValueJob';
+import { resetStatsJSON } from './middlewares/RequestsMonitoringMiddleware';
 import { router } from './routes';
 
 const app = express();
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(router);
 
 updateCriptosValueJob.start();
+resetStatsJSON();
 
 // eslint-disable-next-line no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

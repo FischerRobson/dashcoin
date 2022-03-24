@@ -1,5 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import { CriptosRepositories } from '../repositories/CriptosRepositories';
+import { missingPropWarning } from '../utils/missingPropWarning';
 
 interface ICriptoRequest {
   name: string;
@@ -7,13 +8,15 @@ interface ICriptoRequest {
   value: number;
 }
 
+const criptoProps = ['name', 'initials', 'value'];
+
 export class CreateCriptoService {
-  async execute({ name, initials, value }: ICriptoRequest) {
+  async execute(requestCripto: ICriptoRequest) {
     const criptosRepositories = getCustomRepository(CriptosRepositories);
 
-    if (!name || !initials || !value) {
-      throw new Error('Invalid infos!');
-    }
+    missingPropWarning(criptoProps, requestCripto);
+
+    const { name, initials, value } = requestCripto;
 
     const criptoAlreadyExists = await criptosRepositories.findOne({ initials });
 

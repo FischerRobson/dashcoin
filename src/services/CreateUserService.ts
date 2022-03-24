@@ -22,16 +22,14 @@ const userProps = [
 ];
 
 export class CreateUserService {
-  async execute({
-    name, lastName, email, birthday, gender, cpf,
-  }: IUserRequest) {
+  async execute(requestUser: IUserRequest) {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
-    const missingProps = missingPropWarning(userProps, {
-      name, lastName, email, birthday, gender, cpf,
-    });
+    missingPropWarning(userProps, requestUser);
 
-    if (missingProps) throw new Error(missingProps);
+    const {
+      name, lastName, email, birthday, cpf, gender,
+    } = requestUser;
 
     if (!validateCpf(cpf)) throw new Error('Cpf invalid!');
 
