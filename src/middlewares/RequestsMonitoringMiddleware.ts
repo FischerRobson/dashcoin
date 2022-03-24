@@ -32,3 +32,7 @@ export const RequestMonitoringMiddleware = (req: Request, res: Response, next: N
 
   next();
 };
+
+export const resetStatsJSON = () => {
+  fs.writeFileSync(FILE_PATH, JSON.stringify({}), { flag: 'w' });
+};

@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 
-export function missingPropWarning(props: string[], obj: any): string {
+export function missingPropWarning(props: string[], obj: any): void {
   const propsValidation = props.map((prop) => {
     if (obj[prop] === undefined) {
       return `${prop}`;
@@ -11,8 +11,8 @@ export function missingPropWarning(props: string[], obj: any): string {
   const missingProps = propsValidation.filter((e) => e);
 
   if (missingProps.length === 0) {
-    return '';
+    return;
   }
 
-  return `Missing props: ${missingProps.join(', ')}`;
+  throw new Error(`Missing props: ${missingProps.join(', ')}`);
 }
