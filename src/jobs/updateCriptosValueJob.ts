@@ -8,6 +8,7 @@ const listCriptosService = new ListCriptosService();
 const updateCriptosService = new UpdateCriptosService();
 
 const getValue = async (initials: string) => {
+  if (initials === 'TET') return;
   await axios.get(URL.MERCADO_BITCOIN(initials))
     .then((res) => {
       const { last } = res.data.ticker;
