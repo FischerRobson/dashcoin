@@ -2,6 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { UsersRepositories } from '../repositories/UsersRepositories';
 import { missingPropWarning } from '../utils/missingPropWarning';
 import { validateCpf } from '../utils/validateCpf';
+import { validateEmail } from '../utils/validateEmail';
 
 interface IUserRequest {
   name: string;
@@ -32,6 +33,8 @@ export class CreateUserService {
     } = requestUser;
 
     if (!validateCpf(cpf)) throw new Error('Cpf invalid!');
+
+    if (!validateEmail(email)) throw new Error('E-mail invalid!');
 
     const userAlreadyExists = await usersRepositories.findOne({ cpf });
 
