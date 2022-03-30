@@ -7,7 +7,6 @@ export function missingPropWarning(props: string[], obj: any): void {
       return `${prop}`;
     }
   });
-  console.log(propsValidation);
 
   const missingProps = propsValidation.filter((e) => e);
 

@@ -37,3 +37,63 @@ export class GetUserService {
   }
 }
 ```
+
+Using the User as example, imagine you have this GET request:
+
+```ts
+export class GetUserController {
+  async handle(req: Request, res: Response) {
+    const getUserService = new GetUserService();
+
+    const {
+      name, lastName, cpf, email,
+    } = req.query;
+
+    const user = await getUserService.execute({
+      name, lastName, cpf, email,
+    });
+
+    return res.json(user);
+  }
+}
+```
+
+You revice Name, LastName, Cpf and Email. You can revice all of them, or three, or two, or just one. So how can we deal with this?
+This is the objective of objectEmptyValuesCleaner!
+
+In a scenario where you only get the name, the other attributes are undefined., but if you get name and lastName, you need to make a search using AND operator,
+so if the undefined values still in, the search never will find a user.
+
+Returning for the fist example, you only have the name:
+
+```
+{{url}}/users?name=Robson
+```
+
+But, on Controller you get all parameters:
+
+```ts
+const {
+  name, lastName, cpf, email,
+} = req.query;
+```
+
+So, you pass the object for the function, and fowards to search:
+
+```ts
+async execute(getUserServiceProps: IGetUserServiceProps) {
+  const usersRepositories = getCustomRepository(UsersRepositories);
+  
+  const findParams = objectEmptyValuesCleaner(getUserServiceProps);
+  
+  const user = await usersRepositories.find({
+    where: [
+      {
+        ...findParams,
+      },
+    ],
+  });
+  
+  return user;
+}
+```
