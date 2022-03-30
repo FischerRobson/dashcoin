@@ -1,5 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import { UsersRepositories } from '../repositories/UsersRepositories';
+import { objectEmptyValuesCleaner } from '../utils/objectEmptyValuesCleaner';
 
 // To be solved
 interface IGetUserServiceProps {
@@ -10,19 +11,16 @@ interface IGetUserServiceProps {
 }
 
 export class GetUserService {
-  async execute({
-    cpf, email, lastName, name,
-  }: IGetUserServiceProps) {
+  async execute(getUserServiceProps: IGetUserServiceProps) {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
-    console.log(name);
+    const findParams = objectEmptyValuesCleaner(getUserServiceProps);
 
-    const user = await usersRepositories.findOne({
+    const user = await usersRepositories.find({
       where: [
-        { name },
-        { lastName },
-        { cpf },
-        { email },
+        {
+          ...findParams,
+        },
       ],
     });
 
