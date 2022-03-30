@@ -4,7 +4,6 @@ import { GetUserService } from '../services/GetUserService';
 export class GetUserController {
   async handle(req: Request, res: Response) {
     const getUserService = new GetUserService();
-    console.log(req.query);
 
     const {
       name, lastName, cpf, email,
