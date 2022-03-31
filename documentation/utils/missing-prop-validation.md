@@ -36,10 +36,12 @@ const userProps = [
 ];
 ```
 
+The request object JSON:
+
 ```json
 {
   "lastName": "Fischer",
-  "birthday": "18/12/1974",
+  "birthday": "23/11/2000",
   "cpf": "12312312312",
   "email": "teste@gmail.com",
   "gender": "M"
