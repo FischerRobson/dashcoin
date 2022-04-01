@@ -14,7 +14,7 @@ const getValue = async (initials: string) => {
       const { last } = res.data.ticker;
       updateCriptosService.execute(initials, last);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(`Error while updating ${initials}`));
 };
 
 export const updateCriptosValueJob = cron.schedule('* * * * *', async () => {
