@@ -16,9 +16,17 @@ export class Cripto {
   @Column()
   value: number;
 
+  @Column()
+  variation: number;
+
+  @Column()
+  positiveVariation: boolean;
+
   constructor() {
     if (!this.id) {
       this.id = uuid();
+      this.variation = 0;
+      this.positiveVariation = false;
     }
   }
 }

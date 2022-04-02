@@ -23,6 +23,14 @@ export class CreateCripto1636309258242 implements MigrationInterface {
             name: 'value',
             type: 'numeric',
           },
+          {
+            name: 'variation',
+            type: 'numeric',
+          },
+          {
+            name: 'positiveVariation',
+            type: 'boolean',
+          },
         ],
       }),
     );
