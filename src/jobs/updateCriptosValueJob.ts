@@ -3,6 +3,7 @@ import cron from 'node-cron';
 import { URL } from '../constants/urls';
 import { ListCriptosService } from '../services/ListCritposService';
 import { UpdateCriptosService } from '../services/UpdateCriptoService';
+import { logManager } from '../utils/log/LogController';
 
 const listCriptosService = new ListCriptosService();
 const updateCriptosService = new UpdateCriptosService();
@@ -14,7 +15,10 @@ const getValue = async (initials: string) => {
       const { last } = res.data.ticker;
       updateCriptosService.execute(initials, last);
     })
-    .catch((err) => console.log(`Error while updating ${initials}`));
+    .catch((err) => {
+      console.log(`Error while updating ${initials}`);
+      logManager.writeLog(err);
+    });
 };
 
 export const updateCriptosValueJob = cron.schedule('* * * * *', async () => {

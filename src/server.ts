@@ -5,6 +5,7 @@ import './database';
 import { updateCriptosValueJob } from './jobs/updateCriptosValueJob';
 import { resetStatsJSON } from './middlewares/RequestsMonitoringMiddleware';
 import { router } from './routes';
+import { logManager } from './utils/log/LogController';
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(router);
 
 updateCriptosValueJob.start();
 resetStatsJSON();
+logManager.resetLogsJSON();
 
 // eslint-disable-next-line no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
