@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/database/db.sqlite
+/src/utils/log/logs.json

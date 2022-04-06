@@ -9,7 +9,8 @@
     "test": "jest",
     "testing": "jest --watchAll",
     "coeverage": "jest --collectCoverage",
-    "lint": "eslint --fix --ext .ts,.tsx ."
+    "lint": "eslint --fix --ext .ts,.tsx .",
+    "runMigrations": "typeorm migrations:run"
   },
   "dependencies": {
     "axios": "^0.24.0",
