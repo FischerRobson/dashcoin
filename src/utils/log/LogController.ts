@@ -13,21 +13,23 @@ class LogManager {
   writeLog(log: any) {
     const logDate = getNowDate();
     let logs = this.readLogs();
-    logs = logs === {} ? '' : logs;
-    const newLogs = {
+    logs = logs === [] ? '' : logs;
+    const newLogs = [
       ...logs,
-      date: logDate,
-      log,
-    };
+      {
+        date: logDate,
+        log,
+      },
+    ];
     try {
-      fs.writeFileSync(FILE_PATH, JSON.stringify(newLogs), { flag: 'w' });
+      fs.appendFileSync(FILE_PATH, JSON.stringify(newLogs), { flag: 'w' });
     } catch (err) {
       console.error(err);
     }
   }
 
   readLogs() {
-    let result = {};
+    let result = [];
     try {
       result = JSON.parse(fs.readFileSync(FILE_PATH));
     } catch (err) {
