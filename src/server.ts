@@ -5,7 +5,7 @@ import './database';
 import { updateCriptosValueJob } from './jobs/updateCriptosValueJob';
 import { resetStatsJSON } from './middlewares/RequestsMonitoringMiddleware';
 import { router } from './routes';
-import { logManager } from './utils/log/LogController';
+import { logManager } from './utils/log/LogManager';
 
 const app = express();
 app.use(express.json());

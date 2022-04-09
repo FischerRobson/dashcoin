@@ -3,7 +3,7 @@ import cron from 'node-cron';
 import { URL } from '../constants/urls';
 import { ListCriptosService } from '../services/ListCritposService';
 import { UpdateCriptosService } from '../services/UpdateCriptoService';
-import { logManager } from '../utils/log/LogController';
+import { logManager } from '../utils/log/LogManager';
 
 const listCriptosService = new ListCriptosService();
 const updateCriptosService = new UpdateCriptosService();
