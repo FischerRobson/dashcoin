@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { logManager } from '../utils/log/LogController';
+import { logManager } from '../utils/log/LogManager';
 
 export class LogController {
   async handle(req: Request, res: Response) {
