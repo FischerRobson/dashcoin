@@ -1,5 +1,5 @@
-export function calculatePercentVariation(numA: number, numB: number) {
-  const variation = ((numA - numB) / numB) * 100;
+export function calculatePercentVariation(prevNum: number, nextNum: number) {
+  const variation = ((nextNum - prevNum) / prevNum) * 100;
   // return variation.toFixed(fixValue);
   return variation;
 }
