@@ -12,7 +12,7 @@ describe('Log Manager', () => {
     expect(restoredLog[0]?.log).toBe(data);
   });
 
-  it('Should reset JSON logs', () => {
+  it('Should read empty JSON logs', () => {
     const logs = logManager.readLogs();
     expect(logs).toStrictEqual({});
   });
