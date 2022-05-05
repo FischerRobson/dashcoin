@@ -1,9 +1,9 @@
 import { readStats } from '../middlewares/RequestsMonitoringMiddleware';
-import { formatTime } from '../utils/formatTime';
+import { dateTime } from '../utils/date/DateTime';
 
 export class MonitoringService {
   getHealthInformation() {
-    const uptime = formatTime(process.uptime());
+    const uptime = dateTime.formatSecondsToHoursMinutesSeconds(process.uptime());
 
     const requests = readStats();
 

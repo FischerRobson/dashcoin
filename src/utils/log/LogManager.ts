@@ -1,4 +1,4 @@
-import { getNowDate } from '../date/getNowDate';
+import { dateTime } from '../date/DateTime';
 
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +11,7 @@ class LogManager {
   }
 
   writeLog(log: any) {
-    const logDate = getNowDate();
+    const logDate = dateTime.getNowDateTime();
     let logs = this.readLogs();
     logs = logs === [] ? '' : logs;
     const newLogs = [
