@@ -25,6 +25,7 @@ class LogManager {
       fs.appendFileSync(FILE_PATH, JSON.stringify(newLogs), { flag: 'w' });
     } catch (err) {
       console.error(err);
+      this.writeLog(err);
       throw new Error('Error while writing logs!');
     }
   }
@@ -35,6 +36,7 @@ class LogManager {
       result = JSON.parse(fs.readFileSync(FILE_PATH));
     } catch (err) {
       console.error(err);
+      this.writeLog(err);
       throw new Error('Error while reading logs!');
     }
     return result;
