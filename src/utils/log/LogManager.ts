@@ -1,4 +1,4 @@
-import { getNowDate } from '../date/getNowDate';
+import { dateTime } from '../date/DateTime';
 
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +11,7 @@ class LogManager {
   }
 
   writeLog(log: any) {
-    const logDate = getNowDate();
+    const logDate = dateTime.getNowDateTime();
     let logs = this.readLogs();
     logs = logs === [] ? '' : logs;
     const newLogs = [
@@ -25,6 +25,7 @@ class LogManager {
       fs.appendFileSync(FILE_PATH, JSON.stringify(newLogs), { flag: 'w' });
     } catch (err) {
       console.error(err);
+      this.writeLog(err);
       throw new Error('Error while writing logs!');
     }
   }
@@ -35,6 +36,7 @@ class LogManager {
       result = JSON.parse(fs.readFileSync(FILE_PATH));
     } catch (err) {
       console.error(err);
+      this.writeLog(err);
       throw new Error('Error while reading logs!');
     }
     return result;
