@@ -20,7 +20,7 @@ class DateTime {
   }
 
   getNowDateTime(): string {
-    return `${this.getNowDate} ${this.getNowTime}`;
+    return `${this.getNowDate()} ${this.getNowTime()}`;
   }
 
   formatSecondsToHoursMinutesSeconds(seconds: number): string {

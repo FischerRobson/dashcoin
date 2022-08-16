@@ -14,8 +14,9 @@ export class UpdateCriptosService {
     if (!cripto) return;
 
     const variation = calculatePercentVariation(value, cripto.value);
+    const printableValue = Number(value);
 
-    console.log(`Updating ${initials}: ${value} ${variation}`);
+    console.log(`Updating ${initials}: ${printableValue.toFixed(2)} ${variation.toFixed(2)}%`);
 
     return criptosRepositories.save({
       ...cripto,
