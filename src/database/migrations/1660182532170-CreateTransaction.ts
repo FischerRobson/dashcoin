@@ -11,6 +11,26 @@ export class CreateTransaction1660182532170 implements MigrationInterface {
             type: 'uuid',
             isPrimary: true,
           },
+          {
+            name: 'amount',
+            type: 'numeric',
+            isNullable: false,
+          },
+          {
+            name: 'dateTime',
+            type: 'datetime',
+            isNullable: false,
+          },
+          {
+            name: 'userId',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
+            name: 'criptoId',
+            type: 'uuid',
+            isNullable: false,
+          },
           /* NEXT COLUMNS */
         ],
       }),
